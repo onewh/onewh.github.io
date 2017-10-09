@@ -1,85 +1,181 @@
 @import 'libs/vars';
 @import 'libs/functions';
 @import 'libs/mixins';
-@import 'libs/skel';
 
 /*
-	Future Imperfect by HTML5 UP
+	Helios by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-$palette-border: #dedede;
+/* Basic */
 
-/* Button */
-
-	input[type="submit"],
-	input[type="reset"],
-	input[type="button"],
-	button,
-	.button {
-		border: solid 1px $palette-border;
+	a {
+		border-bottom: solid 1px #ddd;
 	}
 
-/* Form */
-
-	input[type="text"],
-	input[type="password"],
-	input[type="email"],
-	input[type="tel"],
-	select,
-	textarea {
-		border: solid 1px $palette-border;
+	hr {
+		border-top: solid 1px #777;
+		border-bottom: solid 1px #777;
 	}
 
-/* Post */
+	.timestamp {
+		color: #777;
+	}
 
-	.post {
-		border: solid 1px $palette-border;
+/* Section/Article */
 
-		> header {
-			border-bottom: solid 1px $palette-border;
+	section, article {
+		> .last-child, &.last-child {
+			margin-bottom: 0;
 		}
 	}
 
-/* Mini Post */
+/* List */
 
-	.mini-post {
-		border: solid 1px $palette-border;
+	ul {
+		&.divided {
+			li {
+				border-top: solid 1px #777;
+			}
+		}
+		&.menu {
+			li {
+				border-left: solid 1px #777;
+			}
+		}
+
+		&.icons {
+			background: #333;
+			-ms-behavior: url('assets/js/ie/PIE.htc');
+		}
+	}
+
+/* Button */
+
+	.button {
+		-ms-behavior: url('assets/js/ie/PIE.htc');
+	}
+
+/* Icons */
+
+	.icon.circled {
+		-ms-behavior: url('assets/js/ie/PIE.htc');
 	}
 
 /* Header */
 
 	#header {
-		border-bottom: solid 1px $palette-border;
+		-ms-behavior: url('assets/js/ie/backgroundsize.min.htc');
+	}
 
-		.links {
-			border-left: solid 1px $palette-border;
+	body.homepage {
+		#header {
+			height: auto;
+			min-height: 0;
+			padding: 12em 0 12em 0;
+
+			&:after {
+				display: none;
+			}
 		}
+	}
 
-		.main {
-			ul {
-				li {
-					border-left: solid 1px $palette-border;
+/* Nav */
+
+	#nav {
+		> ul {
+			&:before, &:after {
+				border-top: solid 1px #777;
+				border-bottom: solid 1px #777;
+			}
+
+			> li {
+				-ms-behavior: url('assets/js/ie/PIE.htc');
+
+				&.active {
+					border-color: #999;
 				}
 			}
 		}
 	}
 
-/* Sidebar */
+	.dropotron {
+		background: #fff;
+		-ms-behavior: url('assets/js/ie/PIE.htc');
 
-	#sidebar {
-		> * {
-			border-top: solid 1px $palette-border;
+		li {
+			border-color: #eee;
+			padding-right: 1em;
+			color: #5b5b5b;
+		}
+
+		&.level-0 {
+			box-shadow: none !important;
+			margin-top: 1em;
 		}
 	}
 
-/* Menu */
+/* Carousel */
 
-	#menu {
-		border-left: solid 1px $palette-border;
+	.carousel {
+		.forward, .backward {
+			border-radius: 100%;
+			background-color: #483949;
+			width: 7em;
+			height: 7em;
+			margin-top: -3.5em;
+			border-radius: 100%;
+			-ms-behavior: url('assets/js/ie/PIE.htc');
 
-		> * {
-			border-top: solid 1px $palette-border;
+			&:before {
+				display: none;
+			}
+		}
+
+		.forward {
+			right: -3.5em;
+		}
+
+		.backward {
+			left: -3.5em;
+		}
+	}
+
+/* Footer */
+
+	#footer {
+		ul {
+			&.divided {
+				li {
+					border-color: #3B373C;
+				}
+			}
+
+			&.menu {
+				li {
+					border-color: #3B373C;
+				}
+			}
+		}
+
+		hr {
+			border-color: #3B373C;
+		}
+
+		.icons {
+			background: #2F2930;
+		}
+
+		.copyright {
+			color: #777;
+			a {
+				color: #aaa;
+				border: 0;
+
+				&:hover {
+					color: #ccc;
+				}
+			}
 		}
 	}
