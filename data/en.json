@@ -1,0 +1,337 @@
+{
+  "langName": "English",
+  "toggleLabel": "中文",
+  "toggleAria": "Switch language",
+  "home": {
+    "skipLink": "Skip to main content",
+    "brandAria": "Wang Hao, back to home",
+    "navAria": "Quick navigation",
+    "railAria": "Section index",
+    "railCaption": "INDEX",
+    "sections": [
+      {
+        "id": "home",
+        "label": "Intro"
+      },
+      {
+        "id": "expertise",
+        "label": "Expertise"
+      },
+      {
+        "id": "experience",
+        "label": "Experience"
+      },
+      {
+        "id": "projects",
+        "label": "Projects"
+      },
+      {
+        "id": "about",
+        "label": "About"
+      }
+    ],
+    "topLinks": [
+      "Expertise",
+      "Experience",
+      "Projects"
+    ],
+    "contactTop": "Contact",
+    "availability": "Open to opportunities",
+    "name": "Wang Hao",
+    "role": "Semiconductor Technical Support",
+    "subtitle": [
+      "Bridging devices and applications —",
+      "solving technical problems with an engineering mindset."
+    ],
+    "description": [
+      "Currently at Zhuzhou Hongda Electronics Co., Ltd.,",
+      "providing technical support for discrete devices and integrated circuits."
+    ],
+    "primaryAction": "See my experience",
+    "secondaryAction": "View resume",
+    "focusLabel": "FOCUS",
+    "focus": [
+      "Discrete Devices",
+      "Integrated Circuits",
+      "Technical Support"
+    ],
+    "expertise": {
+      "title": "Areas of Focus",
+      "cards": [
+        {
+          "name": "Discrete Devices",
+          "text": "Technical support and promotion for discrete devices, connecting product capabilities with real-world application needs."
+        },
+        {
+          "name": "Integrated Circuits",
+          "text": "Technical support for integrated circuits, bridging product information with customer application requirements."
+        },
+        {
+          "name": "Software Engineering",
+          "text": "iOS and Flutter development experience, with expertise in component-based development, iteration and engineering collaboration."
+        }
+      ]
+    },
+    "experience": {
+      "title": "Career",
+      "currentBadge": "Current",
+      "jobs": [
+        {
+          "company": "Zhuzhou Hongda Electronics Co., Ltd.",
+          "role": "FAE / Technical Support Engineer",
+          "period": "2024.06 — Present",
+          "text": "Technical support and promotion of semiconductor discrete devices and IC products for the Yunnan–Guizhou region (Siweite Business Unit).",
+          "tags": [
+            "Discrete Devices",
+            "Integrated Circuits",
+            "Product Support"
+          ]
+        },
+        {
+          "company": "Kunming Daily · Zhangshang Chuncheng Tech Center",
+          "role": "Mobile Development Engineer",
+          "period": "2023.05 — 2024.05",
+          "text": "Flutter development, component maintenance and daily iteration for the Zhangshang Chuncheng and Dushi Shibao apps."
+        },
+        {
+          "company": "Digital Technology Shenzhen Co., Ltd.",
+          "role": "iOS Development Engineer",
+          "period": "2015.09 — 2023.04",
+          "text": "Developed the 8891 auto app family, driving hybrid development, componentization and continuous iteration."
+        },
+        {
+          "company": "BYD",
+          "role": "Automotive Electronics Engineer",
+          "period": "2013.07 — 2015.09",
+          "text": "Design review and debugging for BCM projects on models such as Tang, E6 and G6; gateway message routing; production ramp-up and after-sales follow-up."
+        }
+      ]
+    },
+    "projects": {
+      "title": "Selected Software Work",
+      "viewDetails": "View details",
+      "items": [
+        {
+          "title": "8891 Auto App",
+          "tag": "iOS · Software Project",
+          "description": "A leading automotive media and trading platform app in Taiwan.",
+          "body": "At Digital Technology Shenzhen, worked on the 8891 auto app covering automotive news, model lookup and comparison, buying guidance and trading.",
+          "details": [
+            "Hybrid development primarily in Swift, with Objective-C and Flutter.",
+            "MVC / MVVM architecture; built shared feature modules and UI components.",
+            "Owned independent release, version iteration and component maintenance."
+          ],
+          "stack": "Swift / Objective-C / Flutter"
+        },
+        {
+          "title": "Zhangshang Chuncheng · Dushi Shibao",
+          "tag": "Flutter · Software Project",
+          "description": "Continuous iteration of news, tips and audio/video features.",
+          "body": "At the Zhangshang Chuncheng Technology Center, responsible for daily development and maintenance of news apps.",
+          "details": [
+            "Flutter development combined with native plugins.",
+            "Component-based integration; multiple apps sharing an underlying framework.",
+            "Continuous product optimization, component and plugin maintenance."
+          ],
+          "stack": "Flutter / Native Plugins / Components"
+        }
+      ]
+    },
+    "about": {
+      "title": "Beyond the Role",
+      "heading": [
+        "Starting in electronics,",
+        "through software, back to devices and applications."
+      ],
+      "p1": "I graduated from Xidian University in Electronic Science and Technology, began my career in automotive electronics at BYD, then spent years in mobile software development. Since 2024 I have been an FAE at Zhuzhou Hongda, providing technical support for discrete devices and integrated circuits.",
+      "p2": "I bring the analytical, collaborative and continuous-improvement practices from software engineering into semiconductor technical support.",
+      "school": "Xidian University",
+      "major": "Electronic Science and Technology · Full-time Bachelor"
+    },
+    "contactSection": {
+      "heading": [
+        "Looking forward to our next",
+        "meaningful technical conversation"
+      ],
+      "period": ".",
+      "text": "Open to FAE / semiconductor technical support opportunities.",
+      "send": "Send email",
+      "copy": "Copy email",
+      "copied": "Email copied",
+      "copyError": "Please copy the address above manually.",
+      "copySuccess": "Email address copied to clipboard."
+    },
+    "footer": {
+      "tagline": "Connecting technology and applications with an engineering mindset.",
+      "backTop": "Back to top ↑"
+    }
+  },
+  "graph": {
+    "panelAria": "Skill knowledge graph",
+    "heading": [
+      "Skills, naturally connected"
+    ],
+    "sub": "Electronics × Software × Applications",
+    "legendAria": "Graph legend",
+    "legend": [
+      "Semiconductors",
+      "Automotive Electronics",
+      "Software Engineering"
+    ],
+    "placeholderTitle": "Explore my skill network",
+    "placeholderText": "Click a node to see its description and connections.",
+    "resetAria": "Reset graph",
+    "skills": [
+      {
+        "id": "wang",
+        "label": "Wang Hao",
+        "description": "Electronic engineering background, connecting semiconductor support, automotive electronics and software engineering."
+      },
+      {
+        "id": "fae",
+        "label": "FAE",
+        "description": "Since 2024 at Zhuzhou Hongda: technical support and promotion for discrete devices and IC products."
+      },
+      {
+        "id": "discrete",
+        "label": "Discrete Devices",
+        "description": "One of my current product lines: semiconductor discrete devices."
+      },
+      {
+        "id": "ic",
+        "label": "Integrated Circuits",
+        "description": "One of my current product lines: integrated circuits."
+      },
+      {
+        "id": "support",
+        "label": "Technical Support",
+        "description": "Technical support and promotion around discrete devices and integrated circuits."
+      },
+      {
+        "id": "auto",
+        "label": "Automotive Electronics",
+        "description": "BCM design review and debugging at BYD, through production ramp-up and after-sales."
+      },
+      {
+        "id": "can",
+        "label": "CAN / LIN",
+        "description": "Routing CAN / LIN messages across network segments in automotive electronics."
+      },
+      {
+        "id": "bcm",
+        "label": "BCM",
+        "description": "Body control module projects for models such as Tang, E6 and G6."
+      },
+      {
+        "id": "c",
+        "label": "C Language",
+        "description": "C-language bring-up and debugging on automotive chips in automotive electronics."
+      },
+      {
+        "id": "software",
+        "label": "Software Development",
+        "description": "Years of mobile development across iOS, Flutter and componentized engineering."
+      },
+      {
+        "id": "ios",
+        "label": "iOS",
+        "description": "Worked on the 8891 auto app family; familiar with the iOS platform."
+      },
+      {
+        "id": "swift",
+        "label": "Swift / OC",
+        "description": "Primarily Swift, with Objective-C and Swift mixed-language experience."
+      },
+      {
+        "id": "flutter",
+        "label": "Flutter",
+        "description": "Flutter development and component maintenance for Zhangshang Chuncheng and Dushi Shibao."
+      },
+      {
+        "id": "components",
+        "label": "Componentization",
+        "description": "Shared feature modules, UI components and a common underlying framework."
+      },
+      {
+        "id": "tools",
+        "label": "Engineering Tools",
+        "description": "Instruments and LLDB debugging; Fastlane, Jenkins, CocoaPods, SPM and Git."
+      }
+    ]
+  },
+  "resume": {
+    "back": "← Back to website",
+    "print": "Print / Save as PDF",
+    "role": "FAE / Semiconductor Technical Support",
+    "meta": "1991-03-05 · Kunming, Yunnan · Mobile/WeChat: 18488856625",
+    "profile": "Profile",
+    "summary": "Currently an FAE at Zhuzhou Hongda providing technical support for discrete devices and integrated circuits. Graduated from Xidian University in Electronic Science and Technology, began in automotive electronics at BYD, then spent years in iOS / Flutter software development.",
+    "work": "Work Experience",
+    "jobs": [
+      {
+        "company": "Zhuzhou Hongda Electronics Co., Ltd.",
+        "period": "2024.06 — Present",
+        "role": "FAE / Technical Support Engineer",
+        "text": "Technical support and promotion of semiconductor discrete devices and IC products for the Yunnan–Guizhou region (Siweite Business Unit).",
+        "bullets": []
+      },
+      {
+        "company": "Kunming Daily · Zhangshang Chuncheng Tech Center",
+        "period": "2023.05 — 2024.05",
+        "role": "Mobile Development Engineer",
+        "bullets": [
+          "Daily iteration and optimization of the Zhangshang Chuncheng and Dushi Shibao apps.",
+          "Flutter development with native plugins and componentization; maintaining a shared underlying framework, components and plugins across multiple apps."
+        ]
+      },
+      {
+        "company": "Digital Technology Shenzhen Co., Ltd.",
+        "period": "2015.09 — 2023.04",
+        "role": "iOS Development Engineer",
+        "bullets": [
+          "Worked on the 8891 auto app family covering automotive news, model lookup and comparison, buying guidance and trading.",
+          "Hybrid development primarily in Swift with Objective-C and Flutter, using MVC / MVVM.",
+          "Owned independent release, version iteration, and maintenance of shared features and UI components."
+        ]
+      },
+      {
+        "company": "BYD",
+        "period": "2013.07 — 2015.09",
+        "role": "Automotive Electronics Engineer",
+        "bullets": [
+          "Design review and debugging for BCM projects on models such as Tang, E6 and G6.",
+          "Body data hub design, routing CAN / LIN messages across network segments.",
+          "Followed production ramp-up and after-sales fault tracking; primarily C-language bring-up and debugging on automotive chips."
+        ]
+      }
+    ],
+    "education": "Education",
+    "school": "Xidian University",
+    "major": "Electronic Science and Technology · Full-time Bachelor",
+    "skills": "Skills",
+    "skillGroups": [
+      {
+        "name": "iOS Development",
+        "text": "Proficient in iOS platform features: memory management, multithreading and persistence; App Extensions, Web integration and OC / Swift interop; AOP and design patterns for efficiency."
+      },
+      {
+        "name": "UI / Architecture",
+        "text": "UIKit and Combine; componentized, modular engineering for iOS / Flutter."
+      },
+      {
+        "name": "Frontend / HarmonyOS",
+        "text": "Vue; ArkTS with object-oriented design patterns and principles."
+      },
+      {
+        "name": "Tools / Engineering",
+        "text": "Instruments and LLDB for debugging; CI / CD with Fastlane and Jenkins; CocoaPods, SPM and Git."
+      },
+      {
+        "name": "Fundamentals & English",
+        "text": "Common data structures and algorithms; comfortable reading and writing technical documentation in English."
+      }
+    ],
+    "areas": "Areas of Focus",
+    "areasText": "Discrete device technical support · IC technical support · iOS / Flutter development · Componentization and iteration"
+  }
+}

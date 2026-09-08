@@ -1,0 +1,162 @@
+.resume-page {
+  min-height: 100vh;
+  padding: 24px 20px 60px;
+  background: #e7ecef;
+  color: #1b2b34;
+}
+.resume-tools {
+  max-width: 830px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  gap: 20px;
+}
+.resume-tools button {
+  background: #263d49;
+  color: white;
+  padding: 10px 16px;
+  height: auto;
+}
+.resume-tools-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.resume-tools .lang-toggle {
+  background: transparent;
+  color: #1b2b34;
+  border: 1px solid #b8c4cc;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+}
+.resume-sheet {
+  max-width: 830px;
+  margin: auto;
+  background: white;
+  padding: 48px 55px;
+  box-shadow: 0 5px 30px #14293210;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.resume-sheet header {
+  border-bottom: 2px solid #334b58;
+  padding-bottom: 22px;
+}
+.resume-sheet h1 {
+  font-size: 38px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+.resume-role {
+  font-size: 20px;
+  margin: 5px 0 10px;
+}
+.resume-meta {
+  font-size: 12px;
+  color: #4d616d;
+  margin: 8px 0 0;
+}
+.resume-sheet header a {
+  color: #3b5d70;
+}
+.resume-sheet section {
+  margin-top: 24px;
+}
+.resume-sheet h2 {
+  font-size: 19px;
+  font-weight: 600;
+  border-bottom: 1px solid #d9e1e6;
+  padding-bottom: 7px;
+  margin-bottom: 12px;
+}
+.resume-sheet h3 {
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 15px 0 2px;
+}
+.resume-sheet h3 span {
+  font-size: 12px;
+  white-space: nowrap;
+  color: #4d616d;
+  font-weight: 400;
+}
+.resume-sheet h4 {
+  font-weight: 500;
+  font-size: 14px;
+  color: #4d616d;
+  margin: 0;
+}
+.resume-sheet p {
+  margin: 8px 0;
+}
+.resume-sheet ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 7px 0;
+}
+.resume-job {
+  break-inside: avoid;
+}
+.resume-sheet h2,
+.resume-sheet h3,
+.resume-sheet h4 {
+  break-after: avoid;
+}
+@media (max-width: 580px) {
+  .resume-page {
+    padding: 16px 10px 30px;
+  }
+  .resume-sheet {
+    padding: 28px 22px;
+  }
+  .resume-sheet h3 {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  .resume-page {
+    padding: 0;
+    background: #fff;
+  }
+  .resume-tools {
+    display: none;
+  }
+  .resume-sheet {
+    max-width: none;
+    box-shadow: none;
+    padding: 0;
+    font-size: 10pt;
+    line-height: 1.65;
+  }
+  .resume-sheet h1 {
+    font-size: 28pt;
+  }
+  .resume-sheet h2 {
+    font-size: 13pt;
+  }
+  .resume-sheet h3 {
+    font-size: 11pt;
+    flex-direction: row;
+  }
+  .resume-sheet h4 {
+    font-size: 10pt;
+  }
+  .resume-sheet section {
+    margin-top: 15px;
+  }
+  .resume-role {
+    font-size: 14pt;
+  }
+}
