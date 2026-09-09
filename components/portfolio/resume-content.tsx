@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useLang, useT } from '@/lib/i18n';
 
@@ -10,11 +9,11 @@ export default function ResumeContent() {
   return (
     <main className="resume-page">
       <div className="resume-tools">
-        <Link href={lang === 'zh' ? '/' : '/en'}>{r.back}</Link>
+        <a href={lang === 'zh' ? '/' : '/en'}>{r.back}</a>
         <div className="resume-tools-group">
-          <Link className="lang-toggle" href={altPath} aria-label={t.toggleAria}>
+          <a className="lang-toggle" href={altPath} aria-label={t.toggleAria}>
             {t.toggleLabel}
-          </Link>
+          </a>
           <Button onClick={() => window.print()}>{r.print}</Button>
         </div>
       </div>

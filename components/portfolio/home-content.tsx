@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import {
   ArrowUpRight,
   ArrowRight,
@@ -97,9 +96,9 @@ export default function HomeContent() {
           <a href="#experience">{h.topLinks[1]}</a>
           <a href="#projects">{h.topLinks[2]}</a>
         </nav>
-        <Link className="lang-toggle" href={altPath} aria-label={t.toggleAria}>
+        <a className="lang-toggle" href={altPath} aria-label={t.toggleAria}>
           {t.toggleLabel}
-        </Link>
+        </a>
         <a href="#contact" className="contact-top">
           {h.contactTop} <ArrowUpRight size={16} />
         </a>
@@ -159,9 +158,14 @@ export default function HomeContent() {
                 <a className="primary-action" href="#experience">
                   {h.primaryAction} <ArrowUpRight size={18} />
                 </a>
-                <Link className="secondary-action" href={resumePath}>
+                <a
+                  className="secondary-action"
+                  href={resumePath}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <FileText size={16} /> {h.secondaryAction}
-                </Link>
+                </a>
               </div>
             </div>
             <div className="identity-footer">
