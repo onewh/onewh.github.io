@@ -164,6 +164,14 @@
     "footer": {
       "tagline": "以工程思维，连接技术与应用。",
       "backTop": "回到顶部 ↑"
+    },
+    "cases": {
+      "label": "技术支持案例",
+      "background": "应用背景",
+      "problem": "问题",
+      "action": "我的行动",
+      "result": "验证结果",
+      "items": []
     }
   },
   "graph": {
@@ -185,77 +193,92 @@
       {
         "id": "wang",
         "label": "王浩",
-        "description": "电子专业背景，连接半导体技术支持、汽车电子与软件工程经验。"
+        "description": "电子专业背景，连接半导体技术支持、汽车电子与软件工程经验。",
+        "short": "王浩"
       },
       {
         "id": "fae",
         "label": "FAE",
-        "description": "2024 年起在株洲宏达负责分立器件与集成电路产品技术支持及推广。"
+        "description": "2024 年起在株洲宏达负责分立器件与集成电路产品技术支持及推广。",
+        "short": "FAE"
       },
       {
         "id": "discrete",
         "label": "分立器件",
-        "description": "当前负责的产品技术支持方向之一：半导体分立器件。"
+        "description": "当前负责的产品技术支持方向之一：半导体分立器件。",
+        "short": "分立器件"
       },
       {
         "id": "ic",
         "label": "集成电路",
-        "description": "当前负责的产品技术支持方向之一：集成电路。"
+        "description": "当前负责的产品技术支持方向之一：集成电路。",
+        "short": "集成电路"
       },
       {
         "id": "support",
         "label": "技术支持",
-        "description": "围绕分立器件与集成电路产品，开展技术支持与推广工作。"
+        "description": "围绕分立器件与集成电路产品，开展技术支持与推广工作。",
+        "short": "技术支持"
       },
       {
         "id": "auto",
         "label": "汽车电子",
-        "description": "在比亚迪参与 BCM 设计评审与调试，跟进量产导入及售后。"
+        "description": "在比亚迪参与 BCM 设计评审与调试，跟进量产导入及售后。",
+        "short": "汽车电子"
       },
       {
         "id": "can",
         "label": "CAN / LIN",
-        "description": "汽车电子工作中涉及 CAN、LIN 报文在不同网段间的路由。"
+        "description": "汽车电子工作中涉及 CAN、LIN 报文在不同网段间的路由。",
+        "short": "CAN / LIN"
       },
       {
         "id": "bcm",
         "label": "BCM",
-        "description": "参与唐、E6、G6 等车型车身控制模块项目。"
+        "description": "参与唐、E6、G6 等车型车身控制模块项目。",
+        "short": "BCM"
       },
       {
         "id": "c",
         "label": "C 语言",
-        "description": "汽车电子工作中进行基于车载芯片的 C 语言程序调测。"
+        "description": "汽车电子工作中进行基于车载芯片的 C 语言程序调测。",
+        "short": "C 语言"
       },
       {
         "id": "software",
         "label": "软件开发",
-        "description": "多年移动端软件开发经验，覆盖 iOS、Flutter 与组件化工程。"
+        "description": "多年移动端软件开发经验，覆盖 iOS、Flutter 与组件化工程。",
+        "short": "软件开发"
       },
       {
         "id": "ios",
         "label": "iOS",
-        "description": "参与 8891 汽车系列 App 开发，熟悉 iOS 平台与应用工程。"
+        "description": "参与 8891 汽车系列 App 开发，熟悉 iOS 平台与应用工程。",
+        "short": "iOS"
       },
       {
         "id": "swift",
         "label": "Swift / OC",
-        "description": "以 Swift 为主，具备 Objective-C 与 Swift 混编经验。"
+        "description": "以 Swift 为主，具备 Objective-C 与 Swift 混编经验。",
+        "short": "Swift / OC"
       },
       {
         "id": "flutter",
         "label": "Flutter",
-        "description": "负责掌上春城、都市时报 App 的 Flutter 开发与组件维护。"
+        "description": "负责掌上春城、都市时报 App 的 Flutter 开发与组件维护。",
+        "short": "Flutter"
       },
       {
         "id": "components",
         "label": "组件化",
-        "description": "建设通用功能模块、UI 组件及多个 App 共用的底层框架。"
+        "description": "建设通用功能模块、UI 组件及多个 App 共用的底层框架。",
+        "short": "组件化"
       },
       {
         "id": "tools",
         "label": "工程工具",
-        "description": "使用 Instruments、LLDB 调试，熟悉 Fastlane、Jenkins、CocoaPods、SPM 与 Git。"
+        "description": "使用 Instruments、LLDB 调试，熟悉 Fastlane、Jenkins、CocoaPods、SPM 与 Git。",
+        "short": "工程工具"
       }
     ]
   },

@@ -126,7 +126,7 @@ export default function SkillGraph() {
             onClick={() => setSelected(selected === skill.id ? null : skill.id)}
           >
             <span className="node-dot" aria-hidden="true" />
-            <span className="node-label">{skill.label}</span>
+            <span className="node-label">{skill.short ?? skill.label}</span>
           </button>
         ))}
       </div>

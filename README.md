@@ -83,10 +83,11 @@ website/
 | 专业方向三张卡片 | `home.expertise.cards`（name、text） |
 | 工作经历条目 | `home.experience.jobs`（数组，倒序排列，首条显示"目前任职"徽标与 tags） |
 | 项目经验卡片与弹窗 | `home.projects.items`（title、tag、description、body、details、stack） |
+| 技术支持案例（FAE 实绩） | `home.cases.items`（title、tag、summary、background、problem、action、result，按“应用背景—问题—行动—验证结果”组织，展示在软件项目之前） |
 | 关于我 / 教育信息 | `home.about.*` |
 | 联系区文案 | `home.contactSection.*` |
 | 页脚 | `home.footer.*` |
-| 技能图谱节点文案 | `graph.skills`（id、label、description） |
+| 技能图谱节点文案 | `graph.skills`（id、label、short、description；`short` 是节点上显示的短标签，完整名称在选中后的说明区展示；`id` 需与 `components/portfolio/skill-graph.tsx` 中 positions 的 id 一致，新增节点需同时加坐标） |
 | 图谱标题 / 图例 / 占位文案 | `graph.heading`、`graph.legend`、`graph.placeholder*` |
 | 简历页全部内容 | `resume.*`（jobs、skillGroups、summary、areasText 等） |
 | 语言按钮文字 | `toggleLabel`、`toggleAria` |
@@ -154,9 +155,14 @@ website/
 
 ## 语言切换机制
 
-- `lib/i18n.tsx` 提供 `LanguageProvider`（挂在 `app/layout.tsx`）、`useLang()`（语言状态与切换）和 `useT()`（当前语言的字典）
-- 语言选择写入 `localStorage` 的 `wh-lang`，切换时同步更新 `<html lang>`
+- 语言由 **URL 决定**，可通过链接分享：`/` 与 `/resume` 为中文，`/en` 与 `/en/resume` 为英文
+- `lib/i18n.tsx` 提供 `LanguageProvider`（挂在每个页面的入口组件 `components/portfolio/home-page.tsx` / `resume-page.tsx`）、`useLang()`（当前语言与切换目标路径）和 `useT()`（当前语言的字典）
+- 切换按钮是一个指向另一语言路由的 `next/link` 链接，页面标题与 description 通过各路由的 `generateMetadata` 按语言输出
 - 组件里的硬编码文字只有两类：始终显示英文的品牌装饰词（如 `FIELD APPLICATION ENGINEER`、`KNOWLEDGE GRAPH`）和邮箱地址。其余一律走字典
+
+### 新增路由页面
+
+英文路由在 `app/[lang]/page.tsx` 与 `app/[lang]/resume/page.tsx`（`generateStaticParams` 只生成 `en`）；页面主体逻辑在共享组件里，中文入口 `app/page.tsx`、`app/resume/page.tsx` 直接复用。
 
 ### 给页面新增文案的正确姿势
 
@@ -222,7 +228,7 @@ python3 -m http.server 8899 -d <合并后的静态目录>
 npm run build -- --prerender-all
 mkdir -p /tmp/publish
 cp -R dist/client/. /tmp/publish/
-cp dist/server/prerendered-routes/*.html dist/server/prerendered-routes/*.rsc /tmp/publish/
+cp -R dist/server/prerendered-routes/. /tmp/publish/
 touch /tmp/publish/.nojekyll
 # 把 /tmp/publish 里的内容覆盖提交到 master 分支并推送
 ```

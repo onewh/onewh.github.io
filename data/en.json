@@ -164,6 +164,14 @@
     "footer": {
       "tagline": "Connecting technology and applications with an engineering mindset.",
       "backTop": "Back to top ↑"
+    },
+    "cases": {
+      "label": "TECH SUPPORT CASES",
+      "background": "Application",
+      "problem": "Problem",
+      "action": "My Action",
+      "result": "Verification",
+      "items": []
     }
   },
   "graph": {
@@ -185,77 +193,92 @@
       {
         "id": "wang",
         "label": "Wang Hao",
-        "description": "Electronic engineering background, connecting semiconductor support, automotive electronics and software engineering."
+        "description": "Electronic engineering background, connecting semiconductor support, automotive electronics and software engineering.",
+        "short": "Wang Hao"
       },
       {
         "id": "fae",
         "label": "FAE",
-        "description": "Since 2024 at Zhuzhou Hongda: technical support and promotion for discrete devices and IC products."
+        "description": "Since 2024 at Zhuzhou Hongda: technical support and promotion for discrete devices and IC products.",
+        "short": "FAE"
       },
       {
         "id": "discrete",
         "label": "Discrete Devices",
-        "description": "One of my current product lines: semiconductor discrete devices."
+        "description": "One of my current product lines: semiconductor discrete devices.",
+        "short": "Discrete"
       },
       {
         "id": "ic",
         "label": "Integrated Circuits",
-        "description": "One of my current product lines: integrated circuits."
+        "description": "One of my current product lines: integrated circuits.",
+        "short": "IC"
       },
       {
         "id": "support",
         "label": "Technical Support",
-        "description": "Technical support and promotion around discrete devices and integrated circuits."
+        "description": "Technical support and promotion around discrete devices and integrated circuits.",
+        "short": "Support"
       },
       {
         "id": "auto",
         "label": "Automotive Electronics",
-        "description": "BCM design review and debugging at BYD, through production ramp-up and after-sales."
+        "description": "BCM design review and debugging at BYD, through production ramp-up and after-sales.",
+        "short": "Auto"
       },
       {
         "id": "can",
         "label": "CAN / LIN",
-        "description": "Routing CAN / LIN messages across network segments in automotive electronics."
+        "description": "Routing CAN / LIN messages across network segments in automotive electronics.",
+        "short": "CAN/LIN"
       },
       {
         "id": "bcm",
         "label": "BCM",
-        "description": "Body control module projects for models such as Tang, E6 and G6."
+        "description": "Body control module projects for models such as Tang, E6 and G6.",
+        "short": "BCM"
       },
       {
         "id": "c",
         "label": "C Language",
-        "description": "C-language bring-up and debugging on automotive chips in automotive electronics."
+        "description": "C-language bring-up and debugging on automotive chips in automotive electronics.",
+        "short": "C"
       },
       {
         "id": "software",
         "label": "Software Development",
-        "description": "Years of mobile development across iOS, Flutter and componentized engineering."
+        "description": "Years of mobile development across iOS, Flutter and componentized engineering.",
+        "short": "Software"
       },
       {
         "id": "ios",
         "label": "iOS",
-        "description": "Worked on the 8891 auto app family; familiar with the iOS platform."
+        "description": "Worked on the 8891 auto app family; familiar with the iOS platform.",
+        "short": "iOS"
       },
       {
         "id": "swift",
         "label": "Swift / OC",
-        "description": "Primarily Swift, with Objective-C and Swift mixed-language experience."
+        "description": "Primarily Swift, with Objective-C and Swift mixed-language experience.",
+        "short": "Swift/OC"
       },
       {
         "id": "flutter",
         "label": "Flutter",
-        "description": "Flutter development and component maintenance for Zhangshang Chuncheng and Dushi Shibao."
+        "description": "Flutter development and component maintenance for Zhangshang Chuncheng and Dushi Shibao.",
+        "short": "Flutter"
       },
       {
         "id": "components",
         "label": "Componentization",
-        "description": "Shared feature modules, UI components and a common underlying framework."
+        "description": "Shared feature modules, UI components and a common underlying framework.",
+        "short": "Components"
       },
       {
         "id": "tools",
         "label": "Engineering Tools",
-        "description": "Instruments and LLDB debugging; Fastlane, Jenkins, CocoaPods, SPM and Git."
+        "description": "Instruments and LLDB debugging; Fastlane, Jenkins, CocoaPods, SPM and Git.",
+        "short": "Tools"
       }
     ]
   },

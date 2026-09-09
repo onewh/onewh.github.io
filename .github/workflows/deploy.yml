@@ -29,7 +29,7 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/publish"
           cp -R dist/client/. "$RUNNER_TEMP/publish/"
-          cp dist/server/prerendered-routes/*.html dist/server/prerendered-routes/*.rsc "$RUNNER_TEMP/publish/"
+          cp -R dist/server/prerendered-routes/. "$RUNNER_TEMP/publish/"
           touch "$RUNNER_TEMP/publish/.nojekyll"
 
       - name: Publish to master branch

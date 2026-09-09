@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { LanguageProvider } from '@/lib/i18n';
 import './globals.css';
 export const metadata: Metadata = {
   title: '王浩 · FAE / 半导体技术支持',
@@ -8,9 +7,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-CN" className="dark">
-      <body>
-        <LanguageProvider>{children}</LanguageProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

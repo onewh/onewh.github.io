@@ -3,14 +3,12 @@ import {
   createContext,
   useContext,
   useEffect,
-  useState,
   type ReactNode,
 } from 'react';
 import zhData from '@/data/zh.json';
 import enData from '@/data/en.json';
 
 export type Lang = 'zh' | 'en';
-const LANG_KEY = 'wh-lang';
 
 export interface ProjectItem {
   title: string;
@@ -19,6 +17,16 @@ export interface ProjectItem {
   body: string;
   details: string[];
   stack: string;
+}
+
+export interface CaseItem {
+  title: string;
+  tag: string;
+  summary: string;
+  background: string;
+  problem: string;
+  action: string;
+  result: string;
 }
 
 export interface CareerJob {
@@ -65,6 +73,14 @@ export interface Dict {
       viewDetails: string;
       items: ProjectItem[];
     };
+    cases: {
+      label: string;
+      background: string;
+      problem: string;
+      action: string;
+      result: string;
+      items: CaseItem[];
+    };
     about: {
       title: string;
       heading: string[];
@@ -97,7 +113,7 @@ export interface Dict {
     placeholderTitle: string;
     placeholderText: string;
     resetAria: string;
-    skills: { id: string; label: string; description: string }[];
+    skills: { id: string; label: string; short?: string; description: string }[];
   };
   resume: {
     back: string;
@@ -125,36 +141,29 @@ export const dict: Record<Lang, Dict> = {
 
 interface LangContextValue {
   lang: Lang;
-  setLang: (lang: Lang) => void;
-  toggle: () => void;
+  altPath: string;
 }
 
 const LangContext = createContext<LangContextValue | null>(null);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>('zh');
+export function LanguageProvider({
+  initialLang,
+  altPath,
+  children,
+}: {
+  initialLang: Lang;
+  altPath: string;
+  children: ReactNode;
+}) {
+  const lang = initialLang;
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(LANG_KEY);
-      if (saved === 'zh' || saved === 'en') setLangState(saved);
-    } catch {
-      // ignore
-    }
-  }, []);
-  useEffect(() => {
-    try {
-      localStorage.setItem(LANG_KEY, lang);
-    } catch {
-      // ignore
-    }
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
   }, [lang]);
-  const value = {
-    lang,
-    setLang: (l: Lang) => setLangState(l),
-    toggle: () => setLangState((prev) => (prev === 'zh' ? 'en' : 'zh')),
-  };
-  return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
+  return (
+    <LangContext.Provider value={{ lang, altPath }}>
+      {children}
+    </LangContext.Provider>
+  );
 }
 
 export function useLang() {
