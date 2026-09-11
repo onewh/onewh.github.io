@@ -2,7 +2,7 @@
 
 个人作品集网站，线上地址：https://onewh.github.io/
 
-- 双语（中文 / 英文），语言选择记忆在浏览器 localStorage，跨页面生效
+- 双语（中文 / 英文），语言由 URL 决定（`/` 中文、`/en` 英文），可直接分享链接
 - 首页：身份区、技能关系图谱、专业方向、工作经历、项目经验、关于我、联系方式
 - 简历页：可打印 / 另存为 PDF 的完整简历
 - 内容与代码完全分离：日常更新只改 `data/zh.json` 和 `data/en.json`，推送后自动上线
@@ -20,21 +20,23 @@ website/
 ├── lib/
 │   └── i18n.tsx                        # 类型定义、双语字典加载、语言上下文
 ├── app/
-│   ├── layout.tsx                      # 根布局（挂载 LanguageProvider、站点 metadata）
-│   ├── page.tsx                        # 首页（结构 + 样式，内容全部取自字典）
+│   ├── layout.tsx                      # 根布局（site metadata）
+│   ├── page.tsx                        # 首页入口（中文，渲染 home-page）
 │   ├── globals.css                     # 全局样式、主题变量、响应式断点
-│   └── resume/
-│       ├── page.tsx                    # 简历页
-│       └── resume.css                  # 简历样式（含 @media print 打印样式）
+│   ├── resume/
+│   │   ├── page.tsx                    # 简历页入口（中文）
+│   │   └── resume.css                  # 简历样式（含 @media print 打印样式）
+│   └── [lang]/                         # 英文路由（generateStaticParams 只产出 en）
+│       ├── page.tsx                    # /en
+│       └── resume/page.tsx             # /en/resume
 ├── components/
 │   ├── portfolio/
 │   │   ├── skill-graph.tsx             # 技能关系图谱（节点坐标、连线关系）
 │   │   └── skill-graph.css             # 图谱样式、分组配色、图例
-│   └── ui/                             # shadcn 组件库（脚手架生成，一般不动）
+│   └── ui/                             # 仅保留实际用到的 button.tsx、dialog.tsx
 ├── public/                             # 静态资源
 │   ├── chip-blueprint.png              # 概念芯片视觉图
 │   └── favicon.svg
-├── hooks/                              # use-mobile 等通用 hooks
 ├── package.json                        # 依赖与脚本
 ├── vite.config.ts                      # vite / vinext / cloudflare 插件配置
 └── tsconfig.json                       # 路径别名 @/*、JSON 导入等
@@ -44,23 +46,47 @@ website/
 
 ## 技术栈
 
-| 层次 | 技术 | 说明 |
-|---|---|---|
-| 运行时 | vinext 1.0.0-beta.5 | Next.js App Router 跑在 Vite 8 上的实现，`app/` 目录路由 + RSC |
-| UI 框架 | React 19.2 | 页面均为 client component，服务端负责 SSR / 预渲染 |
-| 语言 | TypeScript 5.9 | 全量类型化，`Dict` 接口对 JSON 数据做结构校验 |
-| 样式 | Tailwind CSS 4 | PostCSS 插件；主题色用 CSS 变量定义在 `globals.css` |
-| 组件库 | shadcn / @base-ui/react | 实际只用到 Button、Dialog 等少数组件 |
-| 图标 | lucide-react | |
-| 部署目标 | GitHub Pages（静态） | `vinext build --prerender-all` 产出纯静态 HTML + RSC 载荷 |
-| 可选部署 | Cloudflare Workers | `vite.config.ts` 已配置 D1/R2 绑定（`.openai/hosting.json` 为空，未启用） |
-| 质量工具 | oxlint / oxfmt | Rust 实现的 lint 与格式化 |
+| 层次     | 技术                    | 说明                                                                                   |
+| -------- | ----------------------- | -------------------------------------------------------------------------------------- |
+| 运行时   | vinext 1.0.0-beta.5     | 在 Vite 8 上重新实现的 Next.js App Router：`app/` 目录路由 + RSC，提供 `next` 兼容类型 |
+| UI 框架  | React 19.2              | 页面均为 client component，服务端负责 SSR / 预渲染                                     |
+| 构建工具 | Vite 8                  | `vinext()` + `@openai/sites-vite-plugin` + `@cloudflare/vite-plugin` 三个插件          |
+| 语言     | TypeScript 5.9          | 全量类型化，`Dict` 接口对 JSON 数据做结构校验                                          |
+| 样式     | Tailwind CSS 4          | PostCSS 插件；主题色用 CSS 变量定义在 `globals.css`                                    |
+| 组件库   | shadcn / @base-ui/react | UI 底座是 Base UI（非 Radix）；仅用到 Button、Dialog                                   |
+| 图标     | lucide-react            |                                                                                        |
+| 部署目标 | GitHub Pages（静态）    | `vinext build --prerender-all` 产出纯静态 HTML + RSC 载荷                              |
+| 可选部署 | Cloudflare Workers      | `vite.config.ts` 已配置 D1/R2 绑定（`.openai/hosting.json` 为空，未启用）              |
+| 质量工具 | oxlint / oxfmt          | Rust 实现的 lint 与格式化；oxlint 开启了 `typeAware` 与 `typeCheck`                    |
+
+> **注意：项目并未安装 Next.js。** `node_modules` 中没有 `next` 包，`package.json` 也未声明它。代码里的
+> `import type { Metadata } from 'next'`、`next.config.ts`（空配置，vinext 会读取）、`next-env.d.ts`
+> 都由 vinext 的兼容层提供——`tsconfig.json` 中的 `types: ["vinext/types"]` 即为此用。
+
+### 依赖精简说明
+
+脚手架阶段引入的 shadcn 组件共 60 个，实际渲染路径只用到其中两个。已清理：
+
+- **删除 58 个未使用的 `components/ui/*.tsx`**，仅保留 `button.tsx` 与 `dialog.tsx`
+- **移除 8 个随之失去引用的依赖**：`recharts`、`cmdk`、`date-fns`、`embla-carousel-react`、
+  `input-otp`、`react-day-picker`、`react-resizable-panels`、`@shadcn/react`
+- **删除 `hooks/use-mobile.ts`**：仅被已删除的 `sidebar.tsx` 使用，业务代码零引用
+
+效果：客户端 `_next` chunk 由 736 KB 降至 584 KB。以下三个容易被误判为「未使用」，**必须保留**：
+
+| 依赖                       | 保留原因                                                                                                              |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `shadcn`                   | `app/globals.css` 中 `@import 'shadcn/tailwind.css'` 解析到 `node_modules/shadcn/dist/tailwind.css`，是构建期真实依赖 |
+| `react-server-dom-webpack` | 源码未直接 import，但被 vinext 运行时加载（`client.edge` / `static.edge`）                                            |
+| `tw-animate-css`           | 同为 `globals.css` 的 `@import` 目标                                                                                  |
+
+`components.json` 中 `aliases.hooks` 仍指向 `@/hooks`，这是 shadcn CLI 的生成目标，目录缺失无影响；日后用 CLI 添加组件时会自动重建。
 
 ### 构建产物说明
 
 `npm run build -- --prerender-all` 会预渲染全部路由：
 
-- `dist/server/prerendered-routes/` — index.html、resume.html、404.html 及对应 `.rsc` 载荷
+- `dist/server/prerendered-routes/` — 4 个页面（`index.html`、`resume.html`、`en.html`、`en/resume.html`）及对应 `.rsc` 载荷
 - `dist/client/` — 静态资源（_next chunks、图片、favicon 等）
 
 两者合并即构成 GitHub Pages 站点根目录，另加一个空文件 `.nojekyll` 防止 Jekyll 处理下划线目录。
@@ -76,21 +102,21 @@ website/
 
 ### 内容对照表
 
-| 想改什么 | 键路径 |
-|---|---|
-| 姓名、角色、Hero 区文案 | `home.name`、`home.role`、`home.subtitle`、`home.description` |
-| 顶栏 / 侧栏导航 | `home.topLinks`、`home.sections` |
-| 专业方向三张卡片 | `home.expertise.cards`（name、text） |
-| 工作经历条目 | `home.experience.jobs`（数组，倒序排列，首条显示"目前任职"徽标与 tags） |
-| 项目经验卡片与弹窗 | `home.projects.items`（title、tag、description、body、details、stack） |
-| 技术支持案例（FAE 实绩） | `home.cases.items`（title、tag、summary、background、problem、action、result，按“应用背景—问题—行动—验证结果”组织，展示在软件项目之前） |
-| 关于我 / 教育信息 | `home.about.*` |
-| 联系区文案 | `home.contactSection.*` |
-| 页脚 | `home.footer.*` |
-| 技能图谱节点文案 | `graph.skills`（id、label、short、description；`short` 是节点上显示的短标签，完整名称在选中后的说明区展示；`id` 需与 `components/portfolio/skill-graph.tsx` 中 positions 的 id 一致，新增节点需同时加坐标） |
-| 图谱标题 / 图例 / 占位文案 | `graph.heading`、`graph.legend`、`graph.placeholder*` |
-| 简历页全部内容 | `resume.*`（jobs、skillGroups、summary、areasText 等） |
-| 语言按钮文字 | `toggleLabel`、`toggleAria` |
+| 想改什么                   | 键路径                                                                                                                                                                                                      |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 姓名、角色、Hero 区文案    | `home.name`、`home.role`、`home.subtitle`、`home.description`                                                                                                                                               |
+| 顶栏 / 侧栏导航            | `home.topLinks`、`home.sections`                                                                                                                                                                            |
+| 专业方向三张卡片           | `home.expertise.cards`（name、text）                                                                                                                                                                        |
+| 工作经历条目               | `home.experience.jobs`（数组，倒序排列，首条显示"目前任职"徽标与 tags）                                                                                                                                     |
+| 项目经验卡片与弹窗         | `home.projects.items`（title、tag、description、body、details、stack）                                                                                                                                      |
+| 技术支持案例（FAE 实绩）   | `home.cases.items`（title、tag、summary、background、problem、action、result，按“应用背景—问题—行动—验证结果”组织，展示在软件项目之前）                                                                     |
+| 关于我 / 教育信息          | `home.about.*`                                                                                                                                                                                              |
+| 联系区文案                 | `home.contactSection.*`                                                                                                                                                                                     |
+| 页脚                       | `home.footer.*`                                                                                                                                                                                             |
+| 技能图谱节点文案           | `graph.skills`（id、label、short、description；`short` 是节点上显示的短标签，完整名称在选中后的说明区展示；`id` 需与 `components/portfolio/skill-graph.tsx` 中 positions 的 id 一致，新增节点需同时加坐标） |
+| 图谱标题 / 图例 / 占位文案 | `graph.heading`、`graph.legend`、`graph.placeholder*`                                                                                                                                                       |
+| 简历页全部内容             | `resume.*`（jobs、skillGroups、summary、areasText 等）                                                                                                                                                      |
+| 语言按钮文字               | `toggleLabel`、`toggleAria`                                                                                                                                                                                 |
 
 ### 新增一条工作经历
 
@@ -123,7 +149,7 @@ website/
 }
 ```
 
-> 首页项目卡片左上角的图形标识（8891 AUTO / 春城）是硬编码在 `app/page.tsx` 的 `project-symbol` 里的，新增第三个项目会复用第二项的样式，如需专属标识要改少量代码。
+> 首页项目卡片左上角的图形标识（8891 AUTO / 春城）是硬编码在 `components/portfolio/home-content.tsx` 的 `project-symbol` 里的（样式在 `app/globals.css`），新增第三个项目会复用第二项的样式，如需专属标识要改少量代码。
 
 ### 修改后检查
 
@@ -157,7 +183,7 @@ website/
 
 - 语言由 **URL 决定**，可通过链接分享：`/` 与 `/resume` 为中文，`/en` 与 `/en/resume` 为英文
 - `lib/i18n.tsx` 提供 `LanguageProvider`（挂在每个页面的入口组件 `components/portfolio/home-page.tsx` / `resume-page.tsx`）、`useLang()`（当前语言与切换目标路径）和 `useT()`（当前语言的字典）
-- 切换按钮是一个指向另一语言路由的 `next/link` 链接，页面标题与 description 通过各路由的 `generateMetadata` 按语言输出
+- 切换按钮是一个指向另一语言路由的普通 `<a>`（**不是** `next/link`：静态托管无法处理 RSC 客户端导航，跨语言/跨页跳转一律走整页锚点），页面标题与 description 通过各路由的 `generateMetadata` 按语言输出
 - 组件里的硬编码文字只有两类：始终显示英文的品牌装饰词（如 `FIELD APPLICATION ENGINEER`、`KNOWLEDGE GRAPH`）和邮箱地址。其余一律走字典
 
 ### 新增路由页面
@@ -194,7 +220,7 @@ npm run dev -- --host 127.0.0.1  # 启动开发服务器（以终端打印的地
 ```sh
 npm run build        # 生产构建（含静态预渲染）
 npx tsc --noEmit     # 类型检查（会校验 JSON 数据结构）
-npm run lint         # oxlint（components/ui 脚手架文件有既有告警，不影响构建）
+npm run lint         # oxlint（当前 0 error / 0 warning）
 npm run format       # oxfmt 格式化
 ```
 
