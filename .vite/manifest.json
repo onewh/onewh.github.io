@@ -1,6 +1,6 @@
 {
-  "_button-BG2qoeE3.js": {
-    "file": "_next/static/chunks/button-BG2qoeE3.js",
+  "_button-q5Lp92c5.js": {
+    "file": "_next/static/chunks/button-q5Lp92c5.js",
     "name": "button",
     "imports": [
       "_rolldown-runtime-C60lm6uB.js",
@@ -19,13 +19,13 @@
     "name": "rolldown-runtime"
   },
   "components/portfolio/home-page.tsx": {
-    "file": "_next/static/chunks/home-page-CbevEktI.js",
+    "file": "_next/static/chunks/home-page-C2HuFGih.js",
     "name": "home-page",
     "src": "components/portfolio/home-page.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_rolldown-runtime-C60lm6uB.js",
-      "_button-BG2qoeE3.js",
+      "_button-q5Lp92c5.js",
       "_framework-D_rUT4EX.js"
     ],
     "css": [
@@ -33,17 +33,20 @@
     ]
   },
   "components/portfolio/resume-page.tsx": {
-    "file": "_next/static/chunks/resume-page-CsVcNgwo.js",
+    "file": "_next/static/chunks/resume-page-LoojXopj.js",
     "name": "resume-page",
     "src": "components/portfolio/resume-page.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_button-BG2qoeE3.js",
+      "_button-q5Lp92c5.js",
       "_framework-D_rUT4EX.js"
+    ],
+    "css": [
+      "_next/static/css/resume-page.DhJplXmy.css"
     ]
   },
   "node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js": {
-    "file": "_next/static/chunks/app-route-prefetch-policy-Bp_B3Tzo.js",
+    "file": "_next/static/chunks/app-route-prefetch-policy-BMYAaScX.js",
     "name": "app-route-prefetch-policy",
     "src": "node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js",
     "isDynamicEntry": true,
@@ -52,7 +55,7 @@
     ]
   },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-Dv8r8laL.js",
+    "file": "_next/static/chunks/layout-segment-context-BdetKneZ.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -73,7 +76,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-DJJJGJe3.js",
+    "file": "_next/static/chunks/index-BUT2p2lZ.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
