@@ -176,7 +176,7 @@ button {
 }
 .index-rail > a > .mono {
   font-size: 15px;
-  color: #5e707e;
+  color: #748a97;
 }
 .index-rail > a.active {
   border-left-color: var(--primary);

@@ -1,10 +1,5 @@
 'use client';
-import {
-  createContext,
-  useContext,
-  useEffect,
-  type ReactNode,
-} from 'react';
+import { createContext, useContext, useEffect, type ReactNode } from 'react';
 import zhData from '@/data/zh.json';
 import enData from '@/data/en.json';
 
@@ -41,6 +36,7 @@ export interface Dict {
   langName: string;
   toggleLabel: string;
   toggleAria: string;
+  closeLabel: string;
   home: {
     skipLink: string;
     brandAria: string;
@@ -113,7 +109,12 @@ export interface Dict {
     placeholderTitle: string;
     placeholderText: string;
     resetAria: string;
-    skills: { id: string; label: string; short?: string; description: string }[];
+    skills: {
+      id: string;
+      label: string;
+      short?: string;
+      description: string;
+    }[];
   };
   resume: {
     back: string;
@@ -123,7 +124,13 @@ export interface Dict {
     profile: string;
     summary: string;
     work: string;
-    jobs: { company: string; period: string; role: string; text?: string; bullets: string[] }[];
+    jobs: {
+      company: string;
+      period: string;
+      role: string;
+      text?: string;
+      bullets: string[];
+    }[];
     education: string;
     school: string;
     major: string;

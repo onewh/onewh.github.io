@@ -178,7 +178,11 @@ export default function HomeContent() {
           <SkillGraph />
         </section>
         <section id="expertise" className="section-block">
-          <SectionTitle num="02" title={h.expertise.title} en="AREAS OF FOCUS" />
+          <SectionTitle
+            num="02"
+            title={h.expertise.title}
+            en="AREAS OF FOCUS"
+          />
           <div className="focus-grid">
             {h.expertise.cards.map((card, i) => {
               const Icon = expertiseIcons[i] ?? CircuitBoard;
@@ -187,7 +191,13 @@ export default function HomeContent() {
                   <div className="focus-top">
                     <Icon size={25} strokeWidth={1.3} />
                     <span className="mono">
-                      {['DISCRETE DEVICES', 'INTEGRATED CIRCUITS', 'SOFTWARE ENGINEERING'][i]}
+                      {
+                        [
+                          'DISCRETE DEVICES',
+                          'INTEGRATED CIRCUITS',
+                          'SOFTWARE ENGINEERING',
+                        ][i]
+                      }
                     </span>
                   </div>
                   <h3>{card.name}</h3>
@@ -198,10 +208,17 @@ export default function HomeContent() {
           </div>
         </section>
         <section id="experience" className="section-block">
-          <SectionTitle num="03" title={h.experience.title} en="CAREER TRAJECTORY" />
+          <SectionTitle
+            num="03"
+            title={h.experience.title}
+            en="CAREER TRAJECTORY"
+          />
           <div className="timeline">
             {h.experience.jobs.map((job, i) => (
-              <article key={job.company} className={`career${i === 0 ? ' current' : ''}`}>
+              <article
+                key={job.company}
+                className={`career${i === 0 ? ' current' : ''}`}
+              >
                 <div className="career-date mono">
                   {job.period}
                   {i === 0 && <span>{h.experience.currentBadge}</span>}
@@ -250,7 +267,10 @@ export default function HomeContent() {
                         </div>
                       </div>
                     </DialogTrigger>
-                    <DialogContent className="project-dialog case-dialog">
+                    <DialogContent
+                      className="project-dialog case-dialog"
+                      closeLabel={t.closeLabel}
+                    >
                       <span className="mono">CASE / 0{i + 1}</span>
                       <DialogTitle>{item.title}</DialogTitle>
                       <DialogDescription>{item.summary}</DialogDescription>
@@ -316,7 +336,10 @@ export default function HomeContent() {
                     </div>
                   </div>
                 </DialogTrigger>
-                <DialogContent className="project-dialog">
+                <DialogContent
+                  className="project-dialog"
+                  closeLabel={t.closeLabel}
+                >
                   <span className="mono">PROJECT / 0{i + 1}</span>
                   <DialogTitle>{project.title}</DialogTitle>
                   <DialogDescription>{project.body}</DialogDescription>
@@ -378,7 +401,7 @@ export default function HomeContent() {
                 {copied ? h.contactSection.copied : h.contactSection.copy}
               </Button>
             </div>
-            <output className="copy-status">
+            <output className="copy-status" aria-live="polite">
               {copyError
                 ? h.contactSection.copyError
                 : copied
@@ -388,7 +411,9 @@ export default function HomeContent() {
           </div>
         </section>
         <footer className="footer">
-          <span className="mono">© {new Date().getFullYear()} WANG HAO</span>
+          <span className="mono" suppressHydrationWarning>
+            © {new Date().getFullYear()} WANG HAO
+          </span>
           <span>{h.footer.tagline}</span>
           <a href="#home">{h.footer.backTop}</a>
         </footer>

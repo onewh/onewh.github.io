@@ -1,5 +1,6 @@
 'use client';
 import { LanguageProvider, type Lang } from '@/lib/i18n';
+import '@/app/resume/resume.css';
 import ResumeContent from './resume-content';
 
 export default function ResumePage({ initialLang }: { initialLang: Lang }) {

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0f13" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>页面不存在 · 王浩</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --background: #0b0f13;
+        --foreground: #e0e6e9;
+        --muted: #899ba7;
+        --border: #28333b;
+        --accent: #a6bdc3;
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(ellipse at 70% 30%, #25394433, transparent 60%),
+          var(--background);
+        color: var(--foreground);
+        font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+        padding: 24px;
+      }
+      main {
+        width: min(560px, 100%);
+        border: 1px solid var(--border);
+        padding: 44px;
+        position: relative;
+        background: #10171d;
+      }
+      main::before,
+      main::after {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-color: #7f939d;
+      }
+      main::before {
+        left: -1px;
+        top: -1px;
+        border-left: 1px solid;
+        border-top: 1px solid;
+      }
+      main::after {
+        right: -1px;
+        bottom: -1px;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+      }
+      .brand {
+        font-weight: 800;
+        font-size: 28px;
+        letter-spacing: -2px;
+        margin-bottom: 34px;
+      }
+      .brand span { color: var(--accent); }
+      .code {
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        color: #82949f;
+        margin-bottom: 12px;
+      }
+      h1 {
+        font-size: 34px;
+        font-weight: 500;
+        margin: 0 0 14px;
+      }
+      p {
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 15px;
+        margin: 0 0 30px;
+      }
+      nav { display: flex; gap: 12px; flex-wrap: wrap; }
+      a {
+        color: #c4d3d9;
+        text-decoration: none;
+        border: 1px solid #44565f;
+        padding: 12px 18px;
+        font-size: 14px;
+      }
+      a.primary {
+        background: #a9bec6;
+        color: #101b22;
+        border-color: #a9bec6;
+      }
+      a:hover { background: #1c2a32; }
+      a.primary:hover { background: #c4d5db; }
+      .en { font-size: 12px; color: #6e7e89; margin-top: 28px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand">WH<span>.</span></div>
+      <div class="code">ERROR / 404</div>
+      <h1>页面不存在</h1>
+      <p>你访问的页面可能已被移动或删除。<br />The page you are looking for does not exist.</p>
+      <nav>
+        <a class="primary" href="/">返回首页</a>
+        <a href="/en">English site</a>
+      </nav>
+      <div class="en">王浩 · FAE / 半导体技术支持</div>
+    </main>
+  </body>
+</html>

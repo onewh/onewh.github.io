@@ -14,13 +14,16 @@
 ```
 website/
 ├── .github/workflows/deploy.yml        # 自动部署流水线
+├── assets/
+│   └── chip-blueprint.png              # 概念芯片图源文件（不参与构建，用于生成 OG 图）
 ├── data/
 │   ├── zh.json                         # 全部中文内容
 │   └── en.json                         # 全部英文内容（结构须与 zh 一致）
 ├── lib/
-│   └── i18n.tsx                        # 类型定义、双语字典加载、语言上下文
+│   ├── i18n.tsx                        # 类型定义、双语字典加载、语言上下文
+│   └── seo.ts                          # 每页 metadata（canonical / hreflang / Open Graph）
 ├── app/
-│   ├── layout.tsx                      # 根布局（site metadata）
+│   ├── layout.tsx                      # 根布局（site metadata、Person 结构化数据）
 │   ├── page.tsx                        # 首页入口（中文，渲染 home-page）
 │   ├── globals.css                     # 全局样式、主题变量、响应式断点
 │   ├── resume/
@@ -34,10 +37,18 @@ website/
 │   │   ├── skill-graph.tsx             # 技能关系图谱（节点坐标、连线关系）
 │   │   └── skill-graph.css             # 图谱样式、分组配色、图例
 │   └── ui/                             # 仅保留实际用到的 button.tsx、dialog.tsx
-├── public/                             # 静态资源
-│   ├── chip-blueprint.png              # 概念芯片视觉图
-│   └── favicon.svg
-├── package.json                        # 依赖与脚本
+├── public/                             # 静态资源（原样复制到站点根目录）
+│   ├── 404.html                        # GitHub Pages 自定义 404
+│   ├── apple-touch-icon.png            # iOS 主屏图标 180×180
+│   ├── favicon.svg
+│   ├── icon-192.png / icon-512.png     # PWA 图标
+│   ├── manifest.webmanifest            # PWA / 主屏图标信息
+│   ├── og-image.jpg                    # 社交分享图 1200×630
+│   ├── robots.txt
+│   └── sitemap.xml                     # 4 个语言路由 + hreflang
+├── scripts/
+│   └── fix-static-html.mjs             # 构建后把 /en 产物的 <html lang> 改为 en
+├── package.json                        # 依赖与脚本（build 后自动执行 postbuild）
 ├── vite.config.ts                      # vite / vinext / cloudflare 插件配置
 └── tsconfig.json                       # 路径别名 @/*、JSON 导入等
 ```
@@ -198,6 +209,17 @@ website/
 
 ---
 
+## SEO 与静态托管细节
+
+- **页面元数据**：四个路由各自通过 `lib/seo.ts` 的 `createPageMetadata()` 输出标题、描述、canonical、`hreflang`（zh-CN / en / x-default）、Open Graph 与 Twitter Card；新增页面时复用该函数即可
+- **结构化数据**：`app/layout.tsx` 内嵌 `Person` JSON-LD（职位、公司、母校、技能），Google 搜索结果可识别
+- **`<html lang>`**：vinext 的根布局只有一个，`/en` 预渲染产物默认继承 `zh-CN`。`npm run build` 结束后会自动执行 `scripts/fix-static-html.mjs`（npm 的 `postbuild` 生命周期），把 `en.html` 与 `en/resume.html` 改为 `lang="en"`；直接跑 `vinext build` 不会执行这一步
+- **静态文件**：`public/robots.txt`、`public/sitemap.xml`、`public/manifest.webmanifest`、`public/og-image.jpg`、`public/404.html` 及图标会原样复制到站点根目录；`public/.nojekyll` 防止 GitHub Pages 的 Jekyll 处理 `_next` 目录
+- **404**：GitHub Pages 找不到文件时返回根目录的 `404.html`，页面提供中英文返回入口
+- **OG 图**：`public/og-image.jpg` 由 `assets/chip-blueprint.png` 合成（1200×630），源图不再随站点发布
+
+---
+
 ## 简历页与打印
 
 - 内容取自字典的 `resume.*`，与首页工作经历数据是两份独立配置，改了一处记得同步另一处
@@ -218,8 +240,8 @@ npm run dev -- --host 127.0.0.1  # 启动开发服务器（以终端打印的地
 验证：
 
 ```sh
-npm run build        # 生产构建（含静态预渲染）
-npx tsc --noEmit     # 类型检查（会校验 JSON 数据结构）
+npm run build -- --prerender-all  # 生产构建（预渲染全部路由 + postbuild 修正 lang）
+npx tsc --noEmit                  # 类型检查（会校验 JSON 数据结构）
 npm run lint         # oxlint（当前 0 error / 0 warning）
 npm run format       # oxfmt 格式化
 ```
@@ -240,7 +262,7 @@ python3 -m http.server 8899 -d <合并后的静态目录>
 `.github/workflows/deploy.yml` 监听 `source` 分支的 push：
 
 1. `actions/checkout` + Node 22 + `npm ci`
-2. `npm run build -- --prerender-all` 构建静态产物
+2. `npm run build -- --prerender-all` 构建静态产物（随后自动执行 `postbuild`，修正英文页面的 `<html lang>`）
 3. 合并 `dist/client/` 与预渲染路由，加 `.nojekyll`
 4. 以 github-actions[bot] 身份提交并推送到 `master`
 
@@ -279,7 +301,7 @@ git push
 - 主题：B「轨道控制台」的低饱和版本
 - 配色：石墨黑 `#0b0f13`、蓝灰 `#a6bdc3`、雾青 `#9ab6bd`
 - 主题变量集中在 `app/globals.css` 的 `:root`；断点为 1700px / 1150px / 800px / 580px，支持 `prefers-reduced-motion`
-- `public/chip-blueprint.png` 为生成的概念图，仅作装饰，不代表真实封装结构
+- `assets/chip-blueprint.png` 为生成的概念图，仅用于合成 OG 分享图，不代表真实封装结构
 
 ---
 

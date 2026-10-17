@@ -2,6 +2,7 @@
   "langName": "English",
   "toggleLabel": "中文",
   "toggleAria": "Switch language",
+  "closeLabel": "Close",
   "home": {
     "skipLink": "Skip to main content",
     "brandAria": "Wang Hao, back to home",
